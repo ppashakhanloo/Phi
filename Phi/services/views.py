@@ -464,7 +464,7 @@ def rate_post(request, movie_id):
 					post.rate = rate
 					movie = models.Movie.objects.get(id=int(movie_id))
 					# movie.avg_rate = round((movie.avg_rate * movie.total_raters + rate) / (movie.total_raters + 1), 1)
-					movie.total_raters = movie.total_raters + 1
+					# movie.total_raters = movie.total_raters + 1
 					movie.save()
 					post.datetime = datetime.datetime.now()
 					post.member = member
@@ -475,7 +475,7 @@ def rate_post(request, movie_id):
 					rate = int(request.POST['rate'])
 					movie = models.Movie.objects.get(id=int(movie_id))
 					# movie.avg_rate = round((movie.avg_rate * movie.total_raters + rate) / (movie.total_raters + 1), 1)
-					movie.total_raters = movie.total_raters + 1
+					# movie.total_raters = movie.total_raters + 1
 					movie.save()
 					return HttpResponseRedirect('/movies/' + movie_id + '/')
 			return HttpResponseRedirect('/movies/' + movie_id + '/')
