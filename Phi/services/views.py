@@ -152,8 +152,8 @@ def edit_user_profile(request, username):
 					member.user.save() # in mohemeha! :))
 					user = authenticate(username=member.user.username, password=password) # in mohemeha! :))
 					login(request, user)
-				if request.POST['prof_image']!='':
-					member.prof_image = request.FILES['prof_image']
+				# if request.POST['prof_image']!='':
+				member.prof_image = request.FILES['prof_image']
 				member.save()
 				return HttpResponseRedirect('/members/' + member.user.username + '/')
 			
