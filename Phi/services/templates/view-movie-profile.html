@@ -21,9 +21,9 @@
                 <div class="col-md-8">
                     <div class="row">
                         <h2>{{ movie.name }} <small>{{ movie.year }}</small></h2>
-                        <div class="glyphicon glyphicon-star"></div> Score {{ avg_rate|floatformat:1 }} out of 10.0
+                        <div class="glyphicon glyphicon-star"></div> Score {{ movie.avg_rate }} out of 10.0
                         <br/>
-                        <div class="glyphicon glyphicon-user"></div> {{ total_raters }} total
+                        <div class="glyphicon glyphicon-user"></div> {{ movie.total_raters }} total
                     </div>
 
                     <div class="row">

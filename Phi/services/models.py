@@ -6,9 +6,9 @@ from users.models import Member
 class Movie(models.Model):
 	name = models.CharField(max_length=100)
 	year = models.PositiveSmallIntegerField()
-	# avg_rate = models.FloatField()
+	avg_rate = models.FloatField()
 	link_to_imdb = models.CharField(max_length=300)
-	# total_raters = models.PositiveIntegerField()
+	total_raters = models.PositiveIntegerField()
 	summary = models.TextField()
 	genre = models.CharField(max_length=40)
 	initial_release = models.DateField()

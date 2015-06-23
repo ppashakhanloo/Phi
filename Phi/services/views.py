@@ -25,22 +25,6 @@ class TemplatePost():
 		self.comment_num = len(list(models.Comment.objects.filter(post=post)))
 		self.comments = list(models.Comment.objects.filter(post=post).order_by('datetime'))
 
-class TemplateMovie():
-
-	def __init__(self, movie):
-		self.movie = movie
-
-		related_posts = movie.post_set.all()
-		total_raters = 0
-		sum = 0
-		for post in related_posts:
-			total_raters += 1
-			sum += post.rate
-
-		avg_rate = sum / total_raters
-
-		self.avg_rate = avg_rate
-
 def home(request):
 	if request.user.is_authenticated():
 		member = Member.objects.get(user=request.user)
@@ -419,15 +403,6 @@ def get_movie_profile(request, movie_id):
 
 		layout = get_layout(member)		
 
-		related_posts = movie.post_set.all()
-		total_raters = 0
-		sum = 0
-		for post in related_posts:
-			total_raters += 1
-			sum += post.rate
-
-		avg_rate = sum / total_raters
-
 		return render(request, 'view-movie-profile.html', {
 				'movie': movie,
 				'roles': roles,
@@ -439,10 +414,7 @@ def get_movie_profile(request, movie_id):
 				'mozakhraf_notifs': layout['mozakhraf_notifs'],
 				'notif_num': layout['notif_num'],
 				'recmovies': layout['recmovies'],
-				'recusers': layout['recusers'],
-				'avg_rate': avg_rate ,
-				'total_raters': total_raters
-
+				'recusers': layout['recusers']
 			})
 	else:
 		login_form = MemberLoginForm()
@@ -463,8 +435,8 @@ def rate_post(request, movie_id):
 					rate = int(request.POST['rate'])
 					post.rate = rate
 					movie = models.Movie.objects.get(id=int(movie_id))
-					# movie.avg_rate = round((movie.avg_rate * movie.total_raters + rate) / (movie.total_raters + 1), 1)
-					# movie.total_raters = movie.total_raters + 1
+					movie.avg_rate = round((movie.avg_rate * movie.total_raters + rate) / (movie.total_raters + 1), 1)
+					movie.total_raters = movie.total_raters + 1
 					movie.save()
 					post.datetime = datetime.datetime.now()
 					post.member = member
@@ -474,8 +446,8 @@ def rate_post(request, movie_id):
 				else:
 					rate = int(request.POST['rate'])
 					movie = models.Movie.objects.get(id=int(movie_id))
-					# movie.avg_rate = round((movie.avg_rate * movie.total_raters + rate) / (movie.total_raters + 1), 1)
-					# movie.total_raters = movie.total_raters + 1
+					movie.avg_rate = round((movie.avg_rate * movie.total_raters + rate) / (movie.total_raters + 1), 1)
+					movie.total_raters = movie.total_raters + 1
 					movie.save()
 					return HttpResponseRedirect('/movies/' + movie_id + '/')
 			return HttpResponseRedirect('/movies/' + movie_id + '/')
@@ -530,8 +502,12 @@ def get_recmovies():
 	recmovies = models.Movie.objects.order_by('?')[:3]
 	return recmovies
 
-def get_recusers():
-	recusers = Member.objects.order_by('?')[:3]
+def get_recusers(member):
+	member_followees = member.followees.all()
+	followees_id = []
+	for followee in member_followees:
+		followees_id += [followee.id]
+	recusers = Member.objects.exclude(id__in=followees_id).order_by('?')[:3]
 	return recusers
 
 def get_layout(member):
@@ -553,16 +529,12 @@ def get_layout(member):
 			mozakhraf_notifs += [notif]
 
 	recmovies = get_recmovies()
-	recusers = get_recusers()
-
-	rec_template_movies = []
-	for movie in recmovies:
-		rec_template_movies += [TemplateMovie(movie)]
+	recusers = get_recusers(member)
 
 	return {'like_notifs':like_notifs,
 			'comment_notifs':comment_notifs,
 			'follow_notifs':follow_notifs,
 			'mozakhraf_notifs':mozakhraf_notifs,
 			'notif_num':len(notifs),
-			'recmovies':rec_template_movies,
-			'recusers':recusers }
+			'recmovies':recmovies,
+			'recusers':recusers}

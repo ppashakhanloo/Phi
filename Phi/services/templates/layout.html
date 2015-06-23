@@ -100,16 +100,16 @@
                 <hr class="less-margin" />
 
                 {% for movie in recmovies %}
-                <a href="/movies/{{ movie.movie.id }}/">
+                <a href="/movies/{{ movie.id }}/">
                     <div class="row">
                         <div class="col-md-6 center-block">
                             {% if movie.poster_image %}
-                            <img src="{{ movie.movie.poster_image.url }}/" class="img img-responsive img-thumbnail" style="margin: 5px;padding: 4px;" />
+                            <img src="{{ movie.poster_image.url }}/" class="img img-responsive img-thumbnail" style="margin: 5px;padding: 4px;" />
                             {% else %}
                             <img src="/media/media/unknown-movie.png" class="img img-responsive img-thumbnail" style="margin: 5px;padding: 4px;" />
                             {% endif %}
                         </div>
-                        <div class="col-md-6"><h4 style="margin-top: 22px">{{ movie.movie.name }} <small>({{ movie.avg_rate|floatformat:1 }}/10.0)</small></h4></div>
+                        <div class="col-md-6"><h4 style="margin-top: 22px">{{ movie.name }} <small>({{ movie.avg_rate }}/10.0)</small></h4></div>
                     </div>
                 </a>
                 {% endfor %}

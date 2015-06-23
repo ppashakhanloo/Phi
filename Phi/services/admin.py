@@ -7,7 +7,6 @@ class PostAdmin(admin.ModelAdmin):
 		obj.save()
 		obj.movie.avg_rate = round((obj.movie.avg_rate * obj.movie.total_raters + obj.rate) / (obj.movie.total_raters + 1), 1)
 		obj.movie.total_raters = obj.movie.total_raters + 1
-		print('did it!')
 		obj.movie.save()
 		obj.save()
 
