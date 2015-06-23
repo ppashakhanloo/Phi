@@ -15,11 +15,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Member',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('displayed_name', models.CharField(max_length=255)),
-                ('bio', models.TextField()),
+                ('bio', models.TextField(null=True)),
                 ('birthday', models.DateField()),
-                ('followings', models.ManyToManyField(to='users.Member')),
+                ('prof_image', models.ImageField(upload_to='media/', default='media/unknown.png', blank='True')),
+                ('followees', models.ManyToManyField(to='users.Member', null=True)),
                 ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
             ],
         ),

@@ -9,7 +9,7 @@ class Member(models.Model):
 	bio = models.TextField(null=True)
 	birthday = models.DateField()
 	followees = models.ManyToManyField('Member', null=True) # kasani ke follow mikone
-	prof_image = models.ImageField(upload_to='media/', blank="True", default='media/unknown.png')
+	prof_image = models.ImageField(upload_to='media/', blank="True")
 
 	def __str__(self):
 		return self.displayed_name + " (" + self.user.username + ")"

@@ -16,11 +16,7 @@ search results for {{ word }}
 			<a href="/members/{{ person.user.username }}/">
 				<div class="col-md-4 result-item">
 					<div class="col-md-6">
-						{% if person.prof_image %}
 						<img src="{{ person.prof_image.url }}/" class="img-responsive img-thubmnail" style="height:80px; width:80px;" />
-						{% else %}
-						<img src="/media/media/unknown.png" class="img-responsive img-thubmnail" style="height:80px; width:80px;"/>
-						{% endif %}
 					</div>
 					<div class="col-md-6"><h4>{{ person.displayed_name }}</h4></div>
 				</div>

@@ -13,11 +13,7 @@ Post
         <div class="row">
             <div class="col-md-2">
                 <a href="/members/{{ template_post.post.member.user.username }}">
-                    {% if template_post.post.member.prof_image %}
                     <img class="img img-responsive" src="{{ template_post.post.member.prof_image.url }}/" style="width: 70px; height: 70px; margin: auto;" />
-                    {% else %}
-                    <img class="img img-responsive" src="/media/media/unknown.png" style="width: 70px; height: 70px; margin: auto;" />
-                    {% endif %}
                 </a>
             </div>
             <div class="col-md-10">
@@ -96,11 +92,7 @@ Post
                         {% for comment in template_post.comments %}
                         <li class="comment">
                             <a class="pull-left">
-                                {% if comment.member.prof_image %}
                                 <img  style="width: 50px; height: 50px;" class="avatar" src="{{ comment.member.prof_image.url }}/">
-                                {% else %}
-                                <img  style="width: 50px; height: 50px;" class="avatar" src="/media/media/unknown.png">
-                                {% endif %}
                             </a>
                             <div class="comment-body">
                                 <div class="comment-heading">
@@ -148,13 +140,9 @@ Post
                             var newComment = document.createElement("li");
                             newComment.setAttribute("class", "comment");
                             var uname = "{{ member.displayed_name }}";
+                            var img_url = "{{ member.prof_image.url }}";
 
-                            {% if memeber.prof_image %}
-                            newComment.innerHTML = "<a class=\"pull-left\"> <img  style=\"width: 50px; height: 50px;\" class=\"avatar\" src=\"{{ member.prof_image.url }}/\"></a><div class=\"comment-body\"><div class=\"comment-heading\"><a href=\"/members/{{ member.user.username }}/\"><h4 class=\"user\">"+ uname +"</h4></a><h5 class=\"time\">Posted " + "just now" + "</h5></div><p>" + comment_text + "</p></div>";
-                            {% else %}
-                            newComment.innerHTML = "<a class=\"pull-left\"> <img  style=\"width: 50px; height: 50px;\" class=\"avatar\" src=\"/media/media/unknown.png\"></a><div class=\"comment-body\"><div class=\"comment-heading\"><a href=\"/members/{{ member.user.username }}/\"><h4 class=\"user\">"+ uname +"</h4></a><h5 class=\"time\">Posted " + "just now" + "</h5></div><p>" + comment_text + "</p></div>";
-                            {% endif %}
-
+                            newComment.innerHTML = "<a class=\"pull-left\"> <img  style=\"width: 50px; height: 50px;\" class=\"avatar\" src=\"{{ member.prof_image.url }}/\"></a><div class=\"comment-body\"><div class=\"comment-heading\"><a href=\"" + img_url + "\"><h4 class=\"user\">" + uname +"</h4></a><h5 class=\"time\">Posted " + "just now" + "</h5></div><p>" + comment_text + "</p></div>";
 
                             document.querySelector("#p" + post_id + " .comments-list").appendChild(newComment);
                             cm_num = parseInt(document.querySelector("#p" + post_id + " .cm-num").innerHTML)

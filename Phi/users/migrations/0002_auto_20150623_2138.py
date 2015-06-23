@@ -11,9 +11,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RenameField(
+        migrations.AlterField(
             model_name='member',
-            old_name='followings',
-            new_name='followees',
+            name='prof_image',
+            field=models.ImageField(upload_to='media/', blank='True'),
         ),
     ]
