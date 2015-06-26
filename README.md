@@ -1,2 +1,2 @@
 # Phi
-Phi is a social network, combined with movie you love.
+Phi is a social network, combined with movies you love.
