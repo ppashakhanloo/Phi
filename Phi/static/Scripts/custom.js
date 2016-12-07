@@ -38,5 +38,5 @@ function openCommentBox() {
     document.querySelector('.modal-body img').setAttribute('src', moviePoster.getAttribute('src'));
     
     document.querySelector('#rate').value = $(this).text().length;
-};
+}
 $('#rating li').click(openCommentBox);
