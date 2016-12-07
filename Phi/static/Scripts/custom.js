@@ -4,7 +4,7 @@ $("#popover1").popover({ trigger: "hover" });
 $("#popover2").popover({ trigger: "hover" });
 
 $('form').on('submit', function () {
-    if ($('#pass').val() != $('#confirm-pass').val()) {
+    if ($('#pass').val() !== $('#confirm-pass').val()) {
         $('#pass').addClass('glyphicon-error').removeClass('has-success');
     } else {
         $('#pass').addClass('glyphicon-ok').removeClass('has-error');
