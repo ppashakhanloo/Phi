@@ -1,4 +1,4 @@
-﻿intellisense.annotate(jQuery, {
+intellisense.annotate(jQuery, {
   'ajax': function() {
     /// <signature>
     ///   <summary>Perform an asynchronous HTTP (Ajax) request.</summary>
@@ -410,7 +410,7 @@
     ///   <param name="deferreds" type="Deferred">One or more Deferred objects, or plain JavaScript objects.</param>
     ///   <returns type="Promise" />
     /// </signature>
-  },
+  }
 });
 
 var _1228819969 = jQuery.Callbacks;
@@ -476,7 +476,7 @@ intellisense.annotate(_object, {
     ///   <param name="callbacks" type="Array">A function, or array of functions, that are to be removed from the callback list.</param>
     ///   <returns type="Callbacks" />
     /// </signature>
-  },
+  }
 });
 
 return _object;
@@ -618,7 +618,7 @@ intellisense.annotate(_object, {
     ///   <param name="progressCallbacks" type="Function">A function, or array of functions, called when the Deferred notifies progress.</param>
     ///   <returns type="Promise" />
     /// </signature>
-  },
+  }
 });
 
 return _object;
@@ -698,7 +698,7 @@ intellisense.annotate(jQuery.Event.prototype, {
   'which': function() {
     /// <summary>For key or mouse events, this property indicates the specific key or button that was pressed.</summary>
     /// <returns type="Number" />
-  },
+  }
 });
 
 intellisense.annotate(jQuery.fn, {
@@ -2621,7 +2621,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <param name="function(index)" type="Function">A callback function which generates a structure to wrap around the content of the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
-  },
+  }
 });
 
 intellisense.annotate(window, {
@@ -2652,6 +2652,6 @@ intellisense.annotate(window, {
     ///   <param name="jQuery object" type="PlainObject">An existing jQuery object to clone.</param>
     ///   <returns type="jQuery" />
     /// </signature>
-  },
+  }
 });
 
