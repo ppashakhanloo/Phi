@@ -253,10 +253,10 @@ def check_authenticated(request, username, htmlPageName):
 	
 	
 def get_followees(request, username):
-	check_authenticated(request, username, 'view-following-list.html'):
+	check_authenticated(request, username, 'view-following-list.html')
 
 def get_followers(request, username):
-	check_authenticated(request, username, 'view-followers-list.html'):
+	check_authenticated(request, username, 'view-followers-list.html')
 
 def get_single_post(request, post_id):
 	if request.user.is_authenticated():
