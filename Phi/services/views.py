@@ -221,8 +221,8 @@ def follow_unfollow(request, username):
 				'login_form': login_form,
 				'reg_form': reg_form
 			})
-
-def get_followees(request, username):
+	
+def check_authenticated(request, username, htmlPageName):
 	if request.user.is_authenticated():
 		member = Member.objects.get(user=request.user)
 		
@@ -231,7 +231,7 @@ def get_followees(request, username):
 
 		layout = get_layout(member)
 
-		return render(request, 'view-following-list.html', {
+		return render(request, htmlPageName, {
 				'following': following,
 				'followers': followers,
 				'member': member,
@@ -250,35 +250,13 @@ def get_followees(request, username):
 				'login_form': login_form,
 				'reg_form': reg_form
 			})
+	
+	
+def get_followees(request, username):
+	check_authenticated(request, username, 'view-following-list.html'):
 
 def get_followers(request, username):
-	if request.user.is_authenticated():
-		member = Member.objects.get(user=request.user)
-		
-		followers = Member.objects.filter(user__username=username)[0].member_set.all()
-		following = Member.objects.filter(user__username=username)[0].followees.all()
-
-		layout = get_layout(member)
-
-		return render(request, 'view-followers-list.html', {
-				'followers': followers,
-				'following': following,
-				'member': member,
-				'like_notifs': layout['like_notifs'],
-				'comment_notifs': layout['comment_notifs'],
-				'follow_notifs': layout['follow_notifs'],
-				'mozakhraf_notifs': layout['mozakhraf_notifs'],
-				'notif_num': layout['notif_num'],
-				'recmovies': layout['recmovies'],
-				'recusers': layout['recusers']
-			})
-	else:
-		login_form = MemberLoginForm()
-		reg_form = MemberRegModelForm()
-		return render(request, 'new-visit.html', {
-				'login_form': login_form,
-				'reg_form': reg_form
-			})
+	check_authenticated(request, username, 'view-followers-list.html'):
 
 def get_single_post(request, post_id):
 	if request.user.is_authenticated():
