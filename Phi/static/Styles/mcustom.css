@@ -24,7 +24,7 @@ hr {
 
 .sub-home-left{
     border: 1px solid #ccc;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0 0 10px;
     background-color: #eee;
     height: 382px;
     padding: 60px;
@@ -37,7 +37,7 @@ hr {
 .sub-home-right{
     position: relative;
     border: 1px solid #ccc;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0 10px 10px 0;
     background-color: #eee;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -153,7 +153,7 @@ input:focus{
     text-align: center;
 }
 
-.users-col h4 {
+h4 {
     margin-top: 25px;
 }
 
@@ -192,7 +192,7 @@ input:focus{
 /* Phase 2 */
 
 .errorlist {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     padding-left: 14px;
 }
 
