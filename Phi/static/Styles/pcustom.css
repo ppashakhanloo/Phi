@@ -34,9 +34,9 @@ body {
   background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
   background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+  background-image:  -webkit-gradient(linear, left, left, color-stop(0%,rgba(0,0,0,.8)), color-stop(100%, rgba(0,0,0,.8)));
   border: 0;
 }
-
 
 .image {
     position: relative;
@@ -123,8 +123,8 @@ div.more-margin-bottom {
   min-height: 100%;
   font-size: 100px;
   text-align: right;
-  filter: alpha(opacity=0);
   opacity: 0;
+  filter: alpha(opacity=0);
   background: red;
   cursor: inherit;
   display: block;
@@ -133,7 +133,7 @@ div.more-margin-bottom {
 /* Phase 2 */
 
 .errorlist {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     padding-left: 14px;
 }
 
@@ -148,12 +148,4 @@ div.more-margin-bottom {
 
 .result-item {
     margin-top: 10px;
-}
-
-#follow-me {
-  
-}
-
-#unfollow-me {
-  
 }
